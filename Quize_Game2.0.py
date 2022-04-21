@@ -20,8 +20,11 @@ if player.lower() != 'yes':
 
 else:
     
+    # main code - first get the url of the website
     url = 'https://www.javatpoint.com/data-structure-mcq'
+    
     r = requests.get(url)
+    #get html content
     html_cont = r.content
     soup = BeautifulSoup(html_cont, 'html.parser')
 
@@ -72,7 +75,7 @@ else:
         else:
             print('Heyy '+ name +' Welcome to round: '+str(i))
             print()
-
+            print('===============================')
             print('Every round has five questions.')
             print('===============================')
 
@@ -82,20 +85,23 @@ else:
             for x in range(x,x+5,1):
                 print()
                 print(question[x])
-                #q = question[x]
+                
 
                 answer = input("type your option - (a/b/c/d) ? ")
-                #print(dic[question[x]])
                 try:
 
                     if (answer.lower() == dic[question[x]]):
+                        print('===============================')
                         print(dic[question[x]])
                         print('Correct answer! :)')
+                        print('===============================')
                         score+=1
                         total+=1
                     else:
+                        print('===============================')
                         print(dic[question[x]])
                         print('incorrect anser :(')
+                        print('===============================')
                         total+=1
                         
                 except KeyError:
@@ -104,7 +110,7 @@ else:
 
             
             print()
-            ask = input('Are you continue for the next round? ')
+            ask = input('Are you continue for the next round? (yes/no)')
             if ask.lower() == 'yes':
                 a = True
             else:
@@ -113,7 +119,7 @@ else:
 
 print('Hey ' +name +', You got '+ str(score) + ' out of ' + str(total))
 print('You got '+ str((score/total) * 100) + '% . ')
-print()
 print("===========================================")
+print()
 print('See you again.... :)')
 print("===========================================")
